@@ -1,0 +1,7 @@
+.metadata
+.eclipse
+.project
+target
+*.class
+
+
