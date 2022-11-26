@@ -240,7 +240,12 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
 
     return result;
   }
-  
+
+  /**
+   * Return an iterator for the list
+   * 
+   * @return an Iterator
+   */
   @Override
   public Iterator<E> getIterator() {
     return new DoublyLinkedListIterator();
