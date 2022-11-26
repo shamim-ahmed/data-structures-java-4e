@@ -4,11 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
 
-public class SinglyLinkedListTest {
+public class SinglyLinkedListImplTest {
   @Test
   public void testSize() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
@@ -89,5 +90,20 @@ public class SinglyLinkedListTest {
 
     assertTrue("list does not contain null", myList.contains(null));
     assertFalse("list contains non-existent element", myList.contains(50));
+  }
+
+  @Test
+  public void testIterator() {
+    SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+
+    Iterator<Integer> iter = myList.getIterator();
+    Integer i = 1;
+
+    while (iter.hasNext()) {
+      Integer val = iter.next();
+      assertEquals("value is different than expected", i, val);
+      i++;
+    }
   }
 }
