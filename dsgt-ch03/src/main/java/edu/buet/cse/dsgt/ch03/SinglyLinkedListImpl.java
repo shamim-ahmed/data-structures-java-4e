@@ -153,6 +153,8 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
           break;
         }
       }
+
+      p = p.getNext();
     }
 
     return found;
