@@ -76,6 +76,8 @@ public class SinglyLinkedListTest {
   @Test
   public void testContains() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    assertFalse("list contains non-existent element", myList.contains(1));
+
     IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
     myList.addFirst(null);
 
@@ -86,5 +88,6 @@ public class SinglyLinkedListTest {
     }
 
     assertTrue("list does not contain null", myList.contains(null));
+    assertFalse("list contains non-existent element", myList.contains(50));
   }
 }
