@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import org.junit.Test;
 
-public class SinglyLinkedListTest {
+public class SinglyLinkedListImplTest {
   @Test
   public void testSize() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
