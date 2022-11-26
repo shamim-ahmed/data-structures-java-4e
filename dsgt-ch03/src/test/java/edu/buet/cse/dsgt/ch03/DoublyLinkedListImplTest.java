@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
@@ -59,5 +60,42 @@ public class DoublyLinkedListImplTest {
     }
 
     assertEquals("size is different than expected", 0, myList.getSize());
+  }
+
+  @Test
+  public void testToString() {
+    DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+
+    String expected = "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]";
+    assertEquals("toString() output is different than expected", expected, myList.toString());
+  }
+
+  @Test
+  public void testRemove() {
+    DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+
+    myList.remove(5);
+    myList.remove(9);
+    assertEquals("size is different than expected", 8, myList.getSize());
+
+    String expected = "[1, 2, 3, 4, 6, 7, 8, 10]";
+    assertEquals("toString() output is different than expected", expected, myList.toString());
+  }
+
+  @Test
+  public void testIterator() {
+    DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+
+    Iterator<Integer> iter = myList.getIterator();
+    Integer n = 1;
+
+    while (iter.hasNext()) {
+      Integer val = iter.next();
+      assertEquals("value is different than expected", n, val);
+      n++;
+    }
   }
 }
