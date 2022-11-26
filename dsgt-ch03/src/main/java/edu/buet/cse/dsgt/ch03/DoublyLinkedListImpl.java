@@ -235,7 +235,7 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
         }
       }
 
-      p = header.getNext();
+      p = p.getNext();
     }
 
     return result;
