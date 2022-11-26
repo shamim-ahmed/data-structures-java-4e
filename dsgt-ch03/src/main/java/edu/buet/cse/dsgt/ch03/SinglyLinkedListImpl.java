@@ -1,5 +1,7 @@
 package edu.buet.cse.dsgt.ch03;
 
+import java.util.Iterator;
+
 /**
  * An implementation of Singly Linked List
  * 
@@ -161,6 +163,16 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
   }
 
   /**
+   * Return an iterator for the list
+   * 
+   * @return an Iterator
+   */
+  @Override
+  public Iterator<E> getIterator() {
+    return new SinglyLinkedListIterator();
+  }
+
+  /**
    * The toString implementation for SinglyLinkedList
    * 
    * @return a String
@@ -184,5 +196,25 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
     resultBuilder.append("]");
 
     return resultBuilder.toString();
+  }
+
+  public class SinglyLinkedListIterator implements Iterator<E> {
+    private Node<E> p = head;
+
+    @Override
+    public boolean hasNext() {
+      return p != tail;
+    }
+
+    @Override
+    public E next() {
+      if (!hasNext()) {
+        throw new IllegalStateException("No more elements in list");
+      }
+
+      E val = p.getElement();
+      p = p.getNext();
+      return val;
+    }
   }
 }

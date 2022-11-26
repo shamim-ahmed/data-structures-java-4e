@@ -1,5 +1,7 @@
 package edu.buet.cse.dsgt.ch03;
 
+import java.util.Iterator;
+
 /**
  * Interface for Singly Linked List
  * 
@@ -19,6 +21,8 @@ public interface SinglyLinkedList<E> {
   E removeFirst();
 
   E removeLast();
-  
+
   boolean contains(E element);
+
+  public Iterator<E> getIterator();
 }
