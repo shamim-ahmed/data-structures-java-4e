@@ -1,5 +1,12 @@
 package edu.buet.cse.dsgt.ch03;
 
+/**
+ * An implementation of Singly Linked List
+ * 
+ * @author Shamim Ahmed
+ *
+ * @param <E>
+ */
 public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
   private Node<E> head;
   private Node<E> tail;
