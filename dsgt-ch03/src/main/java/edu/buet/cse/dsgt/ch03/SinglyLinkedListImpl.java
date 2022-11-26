@@ -131,6 +131,34 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
   }
 
   /**
+   * Return true of the list contains the given element, false otherwise
+   * 
+   * @return a boolean
+   */
+  public boolean contains(E element) {
+    Node<E> p = head;
+    boolean found = false;
+
+    while (p != null && !found) {
+      E val = p.getElement();
+
+      if (val == null) {
+        if (element == null) {
+          found = true;
+          break;
+        }
+      } else {
+        if (val.equals(element)) {
+          found = true;
+          break;
+        }
+      }
+    }
+
+    return found;
+  }
+
+  /**
    * The toString implementation for SinglyLinkedList
    * 
    * @return a String
