@@ -34,32 +34,42 @@ public class SinglyLinkedListTest {
       n--;
     }
   }
-  
+
   @Test
   public void testAddLast() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
     IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
-    
+
     Integer n = 1;
-    
+
     while (!myList.isEmpty()) {
       Integer val = myList.removeFirst();
       assertEquals("value is different than expected", n, val);
       n++;
     }
   }
-  
+
   @Test
   public void testRemoveLast() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
     IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
-    
+
     Integer n = 10;
-    
+
     while (!myList.isEmpty()) {
-     Integer val = myList.removeLast();
-     assertEquals("value is different than expected", n, val);
-     n--;
+      Integer val = myList.removeLast();
+      assertEquals("value is different than expected", n, val);
+      n--;
     }
+  }
+
+  @Test
+  public void testToString() {
+    SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    assertEquals("toString output is different than expected", "[]", myList.toString());
+
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addFirst(i));
+    String expected = "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]";
+    assertEquals("toString output is different than expected", expected, myList.toString());
   }
 }

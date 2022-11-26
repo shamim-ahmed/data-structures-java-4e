@@ -139,7 +139,7 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
       resultBuilder.append(p.getElement());
       p = p.getNext();
 
-      if (i < size - 1) {
+      if (p != null) {
         resultBuilder.append(", ");
       }
     }
