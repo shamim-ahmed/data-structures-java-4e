@@ -19,4 +19,6 @@ public interface SinglyLinkedList<E> {
   E removeFirst();
 
   E removeLast();
+  
+  boolean contains(E element);
 }

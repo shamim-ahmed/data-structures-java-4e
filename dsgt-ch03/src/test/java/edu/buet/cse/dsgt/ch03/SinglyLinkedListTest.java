@@ -72,4 +72,22 @@ public class SinglyLinkedListTest {
     String expected = "[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]";
     assertEquals("toString output is different than expected", expected, myList.toString());
   }
+
+  @Test
+  public void testContains() {
+    SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    assertFalse("list contains non-existent element", myList.contains(1));
+
+    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+    myList.addFirst(null);
+
+    assertEquals("size is different than expected", 11, myList.getSize());
+
+    for (int i = 1; i <= 10; i++) {
+      assertTrue(String.format("list does not contain %d", i), myList.contains(Integer.valueOf(i)));
+    }
+
+    assertTrue("list does not contain null", myList.contains(null));
+    assertFalse("list contains non-existent element", myList.contains(50));
+  }
 }
