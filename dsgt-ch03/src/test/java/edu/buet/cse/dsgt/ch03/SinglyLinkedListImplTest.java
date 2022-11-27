@@ -117,7 +117,7 @@ public class SinglyLinkedListImplTest {
   @Test
   public void testIteratorWithOneItem() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
-    IntStream.rangeClosed(1, 1).forEach(i -> myList.addFirst(i));
+    myList.addFirst(1);
     Iterator<Integer> iter = myList.iterator();
 
     assertTrue(iter.hasNext());
