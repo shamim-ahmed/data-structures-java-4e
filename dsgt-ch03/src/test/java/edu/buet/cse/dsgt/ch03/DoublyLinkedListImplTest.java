@@ -89,7 +89,7 @@ public class DoublyLinkedListImplTest {
     DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
     IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
 
-    Iterator<Integer> iter = myList.getIterator();
+    Iterator<Integer> iter = myList.iterator();
     Integer n = 1;
 
     while (iter.hasNext()) {
@@ -97,5 +97,23 @@ public class DoublyLinkedListImplTest {
       assertEquals("value is different than expected", n, val);
       n++;
     }
+  }
+
+  @Test
+  public void testIteratorWithEmptyList() {
+    DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
+    Iterator<Integer> iter = myList.iterator();
+    assertFalse(iter.hasNext());
+  }
+
+  @Test
+  public void testIteratorWithOneItem() {
+    DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 1).forEach(i -> myList.addFirst(i));
+    Iterator<Integer> iter = myList.iterator();
+
+    assertTrue(iter.hasNext());
+    assertEquals("value is different than expected", Integer.valueOf(1), iter.next());
+    assertFalse(iter.hasNext());
   }
 }
