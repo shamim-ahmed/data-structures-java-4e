@@ -247,7 +247,7 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
    * @return an Iterator
    */
   @Override
-  public Iterator<E> getIterator() {
+  public Iterator<E> iterator() {
     return new DoublyLinkedListIterator();
   }
 
@@ -276,7 +276,7 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
     return resultBuilder.toString();
   }
 
-  public class DoublyLinkedListIterator implements Iterator<E> {
+  private class DoublyLinkedListIterator implements Iterator<E> {
     private DLNode<E> cur;
 
     public DoublyLinkedListIterator() {

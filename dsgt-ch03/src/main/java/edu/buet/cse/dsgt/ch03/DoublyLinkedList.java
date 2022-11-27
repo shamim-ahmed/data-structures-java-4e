@@ -1,7 +1,5 @@
 package edu.buet.cse.dsgt.ch03;
 
-import java.util.Iterator;
-
 /**
  * Interface for Doubly Linked List
  * 
@@ -9,7 +7,7 @@ import java.util.Iterator;
  *
  * @param <E>
  */
-public interface DoublyLinkedList<E> {
+public interface DoublyLinkedList<E> extends Iterable<E> {
   int getSize();
 
   boolean isEmpty();
@@ -29,6 +27,4 @@ public interface DoublyLinkedList<E> {
   E removeLast();
 
   void remove(E element);
-  
-  Iterator<E> getIterator();
 }
