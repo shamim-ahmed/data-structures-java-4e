@@ -109,7 +109,7 @@ public class DoublyLinkedListImplTest {
   @Test
   public void testIteratorWithOneItem() {
     DoublyLinkedList<Integer> myList = new DoublyLinkedListImpl<>();
-    IntStream.rangeClosed(1, 1).forEach(i -> myList.addFirst(i));
+    myList.addFirst(1);
     Iterator<Integer> iter = myList.iterator();
 
     assertTrue(iter.hasNext());
