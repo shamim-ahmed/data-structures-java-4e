@@ -95,9 +95,9 @@ public class SinglyLinkedListImplTest {
   @Test
   public void testIterator() {
     SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
-    IntStream.rangeClosed(1, 10).forEach(i -> myList.addLast(i));
+    IntStream.rangeClosed(1, 1).forEach(i -> myList.addLast(i));
 
-    Iterator<Integer> iter = myList.getIterator();
+    Iterator<Integer> iter = myList.iterator();
     Integer i = 1;
 
     while (iter.hasNext()) {
@@ -105,5 +105,23 @@ public class SinglyLinkedListImplTest {
       assertEquals("value is different than expected", i, val);
       i++;
     }
+  }
+
+  @Test
+  public void testIteratorWithEmptyList() {
+    SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    Iterator<Integer> iter = myList.iterator();
+    assertFalse(iter.hasNext());
+  }
+
+  @Test
+  public void testIteratorWithOneItem() {
+    SinglyLinkedList<Integer> myList = new SinglyLinkedListImpl<>();
+    IntStream.rangeClosed(1, 1).forEach(i -> myList.addFirst(i));
+    Iterator<Integer> iter = myList.iterator();
+
+    assertTrue(iter.hasNext());
+    assertEquals("value is different than expected", Integer.valueOf(1), iter.next());
+    assertFalse(iter.hasNext());
   }
 }

@@ -168,7 +168,7 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
    * @return an Iterator
    */
   @Override
-  public Iterator<E> getIterator() {
+  public Iterator<E> iterator() {
     return new SinglyLinkedListIterator();
   }
 
@@ -198,12 +198,18 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
     return resultBuilder.toString();
   }
 
-  public class SinglyLinkedListIterator implements Iterator<E> {
-    private Node<E> p = head;
+  private class SinglyLinkedListIterator implements Iterator<E> {
+    private Node<E> current;
+    private int index;
+
+    SinglyLinkedListIterator() {
+      current = head;
+      index = 0;
+    }
 
     @Override
     public boolean hasNext() {
-      return p != tail;
+      return index < size;
     }
 
     @Override
@@ -212,8 +218,9 @@ public class SinglyLinkedListImpl<E> implements SinglyLinkedList<E> {
         throw new IllegalStateException("No more elements in list");
       }
 
-      E val = p.getElement();
-      p = p.getNext();
+      E val = current.getElement();
+      current = current.getNext();
+      index++;
       return val;
     }
   }
